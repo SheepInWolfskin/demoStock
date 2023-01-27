@@ -22,7 +22,7 @@ public class StockRepositoryImpl{
 
     public List<Stock> getStock(String code) {
 
-        
+
         return stockRepository.findByCode(code);
     }
 

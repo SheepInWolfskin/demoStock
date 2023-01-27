@@ -21,8 +21,6 @@ public class StockRepositoryImpl{
     private StockRepository stockRepository;
 
     public List<Stock> getStock(String code) {
-
-
         return stockRepository.findByCode(code);
     }
 

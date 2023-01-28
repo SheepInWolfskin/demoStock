@@ -29,9 +29,4 @@ public class StockController {
     }
 
 
-
-//    @PostMapping
-//    public void uploadData() {
-//
-//    }
 }

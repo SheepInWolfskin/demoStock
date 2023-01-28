@@ -12,6 +12,10 @@ public class StockService {
 
 //    @Autowired
     private StockRepositoryImpl stockRepositoryImpl;
+
+    public StockService(StockRepositoryImpl stockRepositoryImpl) {
+        this.stockRepositoryImpl = stockRepositoryImpl;
+    }
     public List<Stock> getStock(String code) {
         return stockRepositoryImpl.getStock(code);
     }

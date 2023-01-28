@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Stock {
     @Id
-    private Long id;
     private String code;
     private String date;
 

@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
@@ -31,6 +30,10 @@ public class StockRepositoryImpl{
         //localhost:8080/api/v1/stock/addStock
         stockRepository.save(stock);
         return stock;
+    }
+
+    public void bulkAddStock(List<Stock> stocks) {
+        stockRepository.saveAll(stocks);
     }
 
 }

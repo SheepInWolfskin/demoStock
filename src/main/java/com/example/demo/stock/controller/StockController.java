@@ -2,6 +2,7 @@ package com.example.demo.stock.controller;
 
 import com.example.demo.stock.Stock;
 import com.example.demo.stock.buzLogic.StockService;
+import com.example.demo.stock.utils.StockUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -42,17 +44,15 @@ public class StockController {
         System.out.println(file.getOriginalFilename());
         BufferedReader fileReader = new BufferedReader(new
                 InputStreamReader(file.getInputStream(), "UTF-8"));
-//        char c = (char)fileReader.read();
-//        System.out.print(c);
-//        fileReader.close();
-//        int data = fileReader.read();
         String thisLine = null;
+        fileReader.readLine();
+        List<Stock> stockList = new ArrayList<>();
         while((thisLine = fileReader.readLine()) != null) {
-            //do something with data...
-            System.out.println(thisLine);
-//            data = fileReader.readLine();
+            System.out.println(StockUtil.convertStreamDataToStock(thisLine));
+            stockList.add(StockUtil.convertStreamDataToStock(thisLine));
         }
         fileReader.close();
+        stockService.bulkAddStock(stockList);
         return "True";
     }
 

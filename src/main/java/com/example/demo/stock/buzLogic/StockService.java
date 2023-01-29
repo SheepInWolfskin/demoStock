@@ -23,7 +23,7 @@ public class StockService {
         return stockRepositoryImpl.addStock(code);
     }
 
-    public Stock bulkAddStock() {
-        return new Stock();
+    public void bulkAddStock(List<Stock> stocks) {
+        stockRepositoryImpl.bulkAddStock(stocks);
     }
 }

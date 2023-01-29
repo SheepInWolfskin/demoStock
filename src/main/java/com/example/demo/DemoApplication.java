@@ -13,9 +13,9 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@GetMapping("/demo")
-	public String getHello() {
-		return "hello";
-	}
+//	@GetMapping("/demo")
+//	public String getHello() {
+//		return "hello";
+//	}
 
 }

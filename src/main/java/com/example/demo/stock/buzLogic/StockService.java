@@ -22,4 +22,8 @@ public class StockService {
     public Stock addStock(Stock code) {
         return stockRepositoryImpl.addStock(code);
     }
+
+    public Stock bulkAddStock() {
+        return new Stock();
+    }
 }

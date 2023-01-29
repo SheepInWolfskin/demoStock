@@ -17,21 +17,19 @@ import java.util.List;
 public class StockRepositoryImpl{
 
     private StockRepository stockRepository;
-    public StockRepositoryImpl(@Lazy StockRepository stockRepository) {
+    @Lazy
+    public StockRepositoryImpl(StockRepository stockRepository) {
         this.stockRepository = stockRepository;
     }
 
+//    localhost:8080/api/v1/stock/getStock?code=MSFT
     public List<Stock> getStock(String code) {
         return stockRepository.findByCode(code);
     }
 
     public Stock addStock(Stock stock) {
         //localhost:8080/api/v1/stock/addStock
-        System.out.println("hello");
-        System.out.println(stock);
         stockRepository.save(stock);
-//        System.out.println("22222");
-//        System.out.println(stockRepository.findByCode("AA"));
         return stock;
     }
 

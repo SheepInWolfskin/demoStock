@@ -2,6 +2,8 @@
 
 this project was set to run with Docker. Simply run a docker when running the system to demo the outcome.
 
+the DB can be visualized in http://localhost:8081/db/ with MongoExpress
+
 # Example Usage of EndPoints
 getStock GET `localhost:8080/api/v1/stock/getStock?code=AA`
 

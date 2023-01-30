@@ -4,8 +4,14 @@ import com.example.demo.stock.Stock;
 import com.example.demo.stock.client.StockRepositoryImpl;
 import com.example.demo.stock.exception.InternalServiceException;
 import com.example.demo.stock.exception.InvalidRequestException;
+import com.example.demo.stock.utils.StockUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,7 +44,15 @@ public class StockService {
         return existingStock;
     }
 
-    public List<Stock> bulkAddStock(List<Stock> stocks) {
+    public List<Stock> bulkAddStock(MultipartFile file) throws IOException, InvalidRequestException {
+        BufferedReader fileReader = new BufferedReader(
+                new InputStreamReader(file.getInputStream(), "UTF-8"));
+        String thisLine = fileReader.readLine();
+        List<Stock> stocks = new ArrayList<>();
+        while((thisLine = fileReader.readLine()) != null) {
+            stocks.add(StockUtil.convertStreamDataToStock(thisLine));
+        }
+        fileReader.close();
         return stockRepositoryImpl.bulkAddStock(stocks);
     }
 }

@@ -34,7 +34,7 @@ public class StockController {
     }
 
     @PostMapping("/uploadFile")
-    public boolean uploadFile(@RequestParam MultipartFile file) throws Exception {
+    public List<Stock> uploadFile(@RequestParam MultipartFile file) throws Exception {
         BufferedReader fileReader = new BufferedReader(new
                 InputStreamReader(file.getInputStream(), "UTF-8"));
         String thisLine = null;
@@ -44,8 +44,7 @@ public class StockController {
             stockList.add(StockUtil.convertStreamDataToStock(thisLine));
         }
         fileReader.close();
-        stockService.bulkAddStock(stockList);
-        return true;
+        return stockService.bulkAddStock(stockList);
     }
 
     @PutMapping(value = "/updateStock" , consumes = "application/json", produces = "application/json")

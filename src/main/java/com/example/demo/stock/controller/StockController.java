@@ -23,7 +23,6 @@ public class StockController {
         this.stockService = stockService;
     }
 
-    //localhost:8080/api/v1/stock/getStock?code=AA
     @GetMapping(value = "/getStock")
     public List<Stock> getStock(@RequestParam String code) {
         return stockService.getStock(code);

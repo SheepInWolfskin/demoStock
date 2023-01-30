@@ -3,9 +3,6 @@ package com.example.demo.stock.utils;
 import com.example.demo.stock.Stock;
 import com.example.demo.stock.exception.InvalidRequestException;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class StockUtil {
     public static Stock convertStreamDataToStock(final String line) throws InvalidRequestException {
         String[] executeData = line.split(",");
